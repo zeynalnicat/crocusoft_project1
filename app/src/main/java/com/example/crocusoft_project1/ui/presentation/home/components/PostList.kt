@@ -11,11 +11,15 @@ fun PostList(
     postIntent: (HomeContract.Intent) -> Unit,
 ) {
 
-    posts.forEach {
+
+    posts.forEach { post ->
         PostDetail(
-            post = it,
+            post = post,
             postIntent = postIntent
         )
+        if(post == posts[posts.size-1]){
+            postIntent(HomeContract.Intent.OnLoadMore)
+        }
     }
 
 

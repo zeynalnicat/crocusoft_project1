@@ -32,13 +32,28 @@ class HomeViewModel(
             HomeContract.Intent.OnFetchPosts -> {
                 onFetchPosts()
             }
+
+            HomeContract.Intent.OnLoadMore -> {
+                viewModelScope.launch {
+                    _state.emit(_state.value.copy(page = _state.value.page + 1))
+
+                }
+
+            }
         }
 
     }
 
     private fun onFetchPosts() {
         viewModelScope.launch {
-            _state.emit(_state.value.copy(posts = fetchPostsUseCase()))
+            _state.emit(
+                _state.value.copy(
+                    posts = _state.value.posts + fetchPostsUseCase(
+                        state.value.page,
+                        state.value.size
+                    )
+                )
+            )
         }
     }
 

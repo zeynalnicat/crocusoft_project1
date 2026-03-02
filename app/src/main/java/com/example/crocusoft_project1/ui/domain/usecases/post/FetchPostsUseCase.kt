@@ -8,8 +8,8 @@ class FetchPostsUseCase(
 
 ) {
 
-    operator fun invoke(): List<PostEntity> {
-        return postRepository.fetchPosts()
+    operator fun invoke(page: Int, size: Int): List<PostEntity> {
+        return postRepository.fetchPosts(page, size)
 
     }
 }

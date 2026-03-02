@@ -8,8 +8,14 @@ class PostRepositoryImpl: PostRepository {
 
 
 
-    override fun fetchPosts(): List<PostEntity> {
-        return (18..35).map {
+    override fun fetchPosts(page:Int,size:Int): List<PostEntity> {
+        val start = page*size
+        val end = start+size
+
+        return (18..35)
+            .drop(start)
+            .take(end)
+            .map {
             PostEntity(
                username =  it.toString(),
                 contents = listOf("https://picsum.photos/id/18/200/300"),

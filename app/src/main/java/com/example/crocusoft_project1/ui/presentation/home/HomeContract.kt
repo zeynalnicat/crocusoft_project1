@@ -21,11 +21,16 @@ sealed interface HomeContract {
 
         data class OnSave(val postEntity: PostEntity) : Intent
 
+        data object OnLoadMore: Intent
+
     }
 
 
     data class State(
         val stories: List<StoryEntity> = emptyList(),
         val posts: List<PostEntity> = emptyList(),
+        val page: Int = 0,
+        val size: Int = 5,
+
     )
 }
