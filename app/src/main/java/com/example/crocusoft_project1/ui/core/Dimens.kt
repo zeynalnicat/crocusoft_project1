@@ -27,4 +27,8 @@ object Dimens {
 
     val dp03 = 3.dp
     val dp02 = 2.dp
+
+    val dp01 = 1.dp
+
+    val dpHalf = 0.5.dp
 }
