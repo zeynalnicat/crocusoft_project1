@@ -117,24 +117,27 @@ fun PostDetail(
                 )
             }
 
-            Box(
-                modifier = Modifier
-                    .align(Alignment.TopEnd)
-                    .padding(DsTheme.dimens.dp3)
-            ) {
+
+            if(post.contents.size>1){
                 Box(
                     modifier = Modifier
-                        .clip(RoundedCornerShape(DsTheme.dimens.dp3))
+                        .align(Alignment.TopEnd)
+                        .padding(DsTheme.dimens.dp3)
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(DsTheme.dimens.dp3))
 
-                        .background(colorResource(R.color.contentBlack).copy(alpha = 0.6f))
-                        .padding(DsTheme.dimens.dp2),
+                            .background(colorResource(R.color.contentBlack).copy(alpha = 0.6f))
+                            .padding(DsTheme.dimens.dp2),
 
-                    ) {
+                        ) {
 
-                    Text(
-                        text = "${pagerState.currentPage + 1}/${post.contents.size}",
-                        style = DTextStyle.t12White,
-                    )
+                        Text(
+                            text = "${pagerState.currentPage + 1}/${post.contents.size}",
+                            style = DTextStyle.t12White,
+                        )
+                    }
                 }
             }
 
