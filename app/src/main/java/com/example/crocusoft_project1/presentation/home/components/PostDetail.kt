@@ -1,21 +1,30 @@
 package com.example.crocusoft_project1.presentation.home.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.defaultMinSize
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PageSize
+import androidx.compose.foundation.pager.rememberPagerState
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -38,6 +47,7 @@ fun PostDetail(
     val context = LocalContext.current
 
 
+    val pagerState = rememberPagerState { post.contents.size }
 
     Column(
         modifier = Modifier.fillMaxWidth()
@@ -83,7 +93,7 @@ fun PostDetail(
 
         }
 
-        AsyncImage(
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .defaultMinSize(
@@ -91,14 +101,48 @@ fun PostDetail(
                 )
                 .widthIn(DsTheme.dimens.postMaxWidth)
                 .heightIn(max = DsTheme.dimens.postMaxHeight),
+        ) {
+            HorizontalPager(
+                state = pagerState,
+                key = { post.contents[it] }
+            ) { page ->
+                AsyncImage(
+                    modifier = Modifier.fillMaxSize(),
+                    model = ImageRequest.Builder(context)
+                        .data(post.contents[page])
+                        .crossfade(true)
+                        .build(),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop
+                )
+            }
 
-            model = ImageRequest.Builder(context)
-                .data(post.contents[0])
-                .crossfade(true)
-                .build(),
-            contentDescription = null,
-            contentScale = ContentScale.Crop
-        )
+            Box(
+                modifier = Modifier
+                    .align(Alignment.TopEnd)
+                    .padding(DsTheme.dimens.dp3)
+            ) {
+                Box(
+                    modifier = Modifier
+                        .clip(RoundedCornerShape(DsTheme.dimens.dp3))
+
+                        .background(colorResource(R.color.contentBlack).copy(alpha = 0.6f))
+                        .padding(DsTheme.dimens.dp2),
+
+                    ) {
+
+                    Text(
+                        text = "${pagerState.currentPage + 1}/${post.contents.size}",
+                        style = DTextStyle.t12White,
+                    )
+                }
+            }
+
+
+        }
+
+
+
 
         Row(
             modifier = Modifier.fillMaxWidth(),
@@ -141,14 +185,14 @@ fun PostDetail(
             style = DsTheme.textStyle.t12
         )
 
-        Spacer(modifier = Modifier.height(height = DsTheme.dimens.dp3))
+        Spacer(modifier = Modifier.height(height = DsTheme.dimens.dp2))
 
         Text(
             modifier = Modifier.padding(DsTheme.dimens.dp2),
             text = post.date,
             style = DsTheme.textStyle.t12Gray,
 
-        )
+            )
 
 
     }

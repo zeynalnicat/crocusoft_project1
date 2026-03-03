@@ -17,4 +17,6 @@
     <color name="purple02">#7700C3</color>
     <color name="purple">#A60F93</color>
     <color name="gray">#A6A6AA</color>
+
+    <color name="contentBlack">#121212</color>
 </resources>

@@ -19,6 +19,12 @@ object DTextStyle {
         fontWeight = FontWeight.W400,
     )
 
+    val t12White = TextStyle(
+        fontSize = DsTheme.dimens.sp1,
+        color = White,
+        fontWeight = FontWeight.W400,
+    )
+
     val t14Bold = TextStyle(
         fontSize = DsTheme.dimens.sp2,
         fontWeight = FontWeight.W600

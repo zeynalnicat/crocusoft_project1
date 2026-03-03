@@ -18,7 +18,7 @@ class PostRepositoryImpl: PostRepository {
             .map {
             PostEntity(
                username =  it.toString(),
-                contents = listOf("https://picsum.photos/200/300"),
+                contents = listOf("https://picsum.photos/200/300","https://picsum.photos/200/300,"),
                 location = "Baku, Azerbaijan",
                 description = "A beautiful sunset over the mountains in Azerbaijan. Follow me to stay tuned with latest updates ",
                 date = "14 December",
