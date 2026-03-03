@@ -4,6 +4,7 @@ import com.example.crocusoft_project1.data.HomeRepositoryImpl
 import com.example.crocusoft_project1.data.PostRepositoryImpl
 import com.example.crocusoft_project1.domain.repositories.HomeRepository
 import com.example.crocusoft_project1.domain.repositories.PostRepository
+import dagger.Binds
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,13 +14,13 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object RepositoryModule {
+abstract class RepositoryModule {
 
     @Singleton
-    @Provides
-    fun provideHomeRepository(): HomeRepository = HomeRepositoryImpl()
+    @Binds
+    abstract fun provideHomeRepository(homeRepositoryImpl: HomeRepositoryImpl): HomeRepository
 
     @Singleton
-    @Provides
-    fun providePostRepository(): PostRepository = PostRepositoryImpl()
+    @Binds
+    abstract fun providePostRepository(postRepositoryImpl: PostRepositoryImpl): PostRepository
 }

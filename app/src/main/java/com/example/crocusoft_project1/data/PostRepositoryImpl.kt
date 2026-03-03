@@ -2,9 +2,10 @@ package com.example.crocusoft_project1.data
 
 import com.example.crocusoft_project1.domain.entities.PostEntity
 import com.example.crocusoft_project1.domain.repositories.PostRepository
+import jakarta.inject.Inject
 
 
-class PostRepositoryImpl : PostRepository {
+class PostRepositoryImpl @Inject constructor() : PostRepository {
 
 
     override fun fetchPosts(page: Int, size: Int): List<PostEntity> {

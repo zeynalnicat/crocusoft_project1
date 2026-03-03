@@ -2,8 +2,9 @@ package com.example.crocusoft_project1.data
 
 import com.example.crocusoft_project1.domain.entities.StoryEntity
 import com.example.crocusoft_project1.domain.repositories.HomeRepository
+import jakarta.inject.Inject
 
-class HomeRepositoryImpl: HomeRepository {
+class HomeRepositoryImpl @Inject constructor(): HomeRepository {
     override fun fetchStories(): List<StoryEntity> {
         return (1..10).map { id ->
             StoryEntity(
