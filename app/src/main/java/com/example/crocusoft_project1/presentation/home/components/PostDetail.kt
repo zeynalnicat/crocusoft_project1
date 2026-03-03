@@ -36,6 +36,7 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import com.example.crocusoft_project1.R
 import com.example.crocusoft_project1.core.DTextStyle
+import com.example.crocusoft_project1.core.Drawables
 import com.example.crocusoft_project1.core.DsTheme
 import com.example.crocusoft_project1.core.theme.Blue
 import com.example.crocusoft_project1.domain.entities.PostEntity
@@ -92,7 +93,7 @@ fun PostDetail(
                 }
             }
 
-            DIconButton(R.drawable.more) { postIntent(HomeContract.Intent.OnToggleMore) }
+            DIconButton(Drawables.more) { postIntent(HomeContract.Intent.OnToggleMore) }
 
         }
 
@@ -157,15 +158,15 @@ fun PostDetail(
             Row(
                 verticalAlignment = Alignment.CenterVertically,
             ) {
-                DIconButton(R.drawable.like) {
+                DIconButton(Drawables.like) {
                     postIntent(HomeContract.Intent.OnLikePost(post))
 
                 }
-                DIconButton(R.drawable.comment) {
+                DIconButton(Drawables.comment) {
                     postIntent(HomeContract.Intent.OnComment)
 
                 }
-                DIconButton(R.drawable.messanger) {
+                DIconButton(Drawables.messanger) {
                     postIntent(HomeContract.Intent.OnShare(post))
 
                 }
@@ -192,7 +193,7 @@ fun PostDetail(
             }
 
 
-            DIconButton(R.drawable.save) { postIntent(HomeContract.Intent.OnSave(post)) }
+            DIconButton(Drawables.save) { postIntent(HomeContract.Intent.OnSave(post)) }
         }
 
 

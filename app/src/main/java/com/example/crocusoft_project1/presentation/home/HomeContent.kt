@@ -15,6 +15,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import com.example.crocusoft_project1.R
+import com.example.crocusoft_project1.core.Colors
 import com.example.crocusoft_project1.core.DsTheme
 import com.example.crocusoft_project1.presentation.home.components.DAppbar
 import com.example.crocusoft_project1.presentation.home.components.PostList
@@ -55,7 +56,7 @@ fun HomeContent(
 
             HorizontalDivider(
                 thickness = DsTheme.dimens.dpHalf,
-                color = colorResource(R.color.shadow).copy(alpha = 0.6f)
+                color = colorResource(Colors.shadow).copy(alpha = 0.6f)
             )
 
             Spacer(modifier = Modifier.height(height = DsTheme.dimens.dp2))

@@ -28,6 +28,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
 import com.example.crocusoft_project1.R
 import com.example.crocusoft_project1.core.DsTheme
+import com.example.crocusoft_project1.core.Strings
 import com.example.crocusoft_project1.domain.entities.StoryEntity
 import com.example.crocusoft_project1.core.theme.White
 
@@ -115,7 +116,7 @@ fun StoryItem(
                     ) {
                         Text(
                             text = stringResource(
-                                R.string.live,
+                                Strings.live,
 
                                 ),
                             style = DsTheme.textStyle.t8White

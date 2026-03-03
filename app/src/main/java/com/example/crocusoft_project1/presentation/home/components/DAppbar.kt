@@ -11,7 +11,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.example.crocusoft_project1.R
+import com.example.crocusoft_project1.core.Drawables
 import com.example.crocusoft_project1.core.DsTheme
+import com.example.crocusoft_project1.core.Strings
 
 
 @Composable
@@ -32,10 +34,10 @@ fun DAppbar(
 
     ) {
 
-        DIconButton(R.drawable.shape) { prefixAction() }
+        DIconButton(Drawables.shape) { prefixAction() }
 
         Text(
-            text = stringResource(id = R.string.title),
+            text = stringResource(id = Strings.title),
             style = DsTheme.textStyle.tTitle
 
         )
@@ -44,9 +46,9 @@ fun DAppbar(
             horizontalArrangement = Arrangement.spacedBy(DsTheme.dimens.dp4)
         ) {
 
-            DIconButton(R.drawable.igtv) { suffixActionLeft() }
+            DIconButton(Drawables.igtv) { suffixActionLeft() }
 
-            DIconButton(R.drawable.messanger) { suffixActionRight() }
+            DIconButton(Drawables.messanger) { suffixActionRight() }
 
         }
 
