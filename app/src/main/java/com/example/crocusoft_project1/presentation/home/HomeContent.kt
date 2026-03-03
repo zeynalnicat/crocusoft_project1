@@ -30,7 +30,6 @@ fun HomeContent(
     postIntent: (HomeContract.Intent) -> Unit,
 ) {
 
-    val scrollState = rememberScrollState()
 
     LaunchedEffect(Unit) {
         postIntent(HomeContract.Intent.OnFetchStories)
