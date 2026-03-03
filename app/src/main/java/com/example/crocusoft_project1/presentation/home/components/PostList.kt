@@ -1,5 +1,7 @@
 package com.example.crocusoft_project1.presentation.home.components
 
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 
 import com.example.crocusoft_project1.domain.entities.PostEntity

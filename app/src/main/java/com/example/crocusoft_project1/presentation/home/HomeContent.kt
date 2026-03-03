@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.HorizontalDivider
@@ -39,35 +40,52 @@ fun HomeContent(
 
     Scaffold(
         modifier = Modifier.padding(innerPadding),
-        topBar = { DAppbar(
-            postIntent = postIntent
-        ) }
+        topBar = {
+            DAppbar(
+                postIntent = postIntent
+            )
+        }
     ) { innerPadding ->
-        Column(
+        LazyColumn(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(innerPadding)
-                .verticalScroll(scrollState)
 
         ) {
-            Spacer(modifier = Modifier.height(height = DsTheme.dimens.dp2))
-            StoryList(
-                stories = state.stories
-            )
-            Spacer(modifier = Modifier.height(height = DsTheme.dimens.dp2))
+            item { Spacer(modifier = Modifier.height(height = DsTheme.dimens.dp2)) }
 
-            HorizontalDivider(
-                thickness = DsTheme.dimens.dpHalf,
-                color = colorResource(Colors.shadow).copy(alpha = 0.6f)
-            )
+            item {
+                StoryList(
+                    stories = state.stories
+                )
+            }
 
-            Spacer(modifier = Modifier.height(height = DsTheme.dimens.dp2))
+            item {
+                Spacer(modifier = Modifier.height(height = DsTheme.dimens.dp2))
+            }
 
-            PostList(
-                posts = state.posts,
-                postIntent = postIntent,
-                state = state
-            )
+
+            item {
+
+                HorizontalDivider(
+                    thickness = DsTheme.dimens.dpHalf,
+                    color = colorResource(Colors.shadow).copy(alpha = 0.6f)
+                )
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(height = DsTheme.dimens.dp2))
+            }
+
+            item {
+                PostList(
+                    posts = state.posts,
+                    postIntent = postIntent,
+                    state = state
+                )
+            }
+
+
         }
     }
 }
